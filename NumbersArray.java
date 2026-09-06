@@ -19,7 +19,48 @@ public class NumbersArray {
         System.out.println("Unique numbers : " + Arrays.toString(findUnique(input))); 
     }
 
-    // Write your methods here
-    
+   // max
+    public static int findMax(Integer[] arr) {
+        int max = arr[0];
+        for (int num : arr) {
+            if (num > max) {
+                max = num;
+            }
+        }
+        return max;
+    }
+
+    // duplicate
+    public static Integer[] findDuplicates(Integer[] arr) {
+        Map<Integer, Integer> countMap = new LinkedHashMap<>();
+        for (int num : arr) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+
+        List<Integer> duplicates = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> entry : countMap.entrySet()) {
+            if (entry.getValue() > 1) {
+                duplicates.add(entry.getKey());
+            }
+        }
+        return duplicates.toArray(new Integer[0]);
+    }
+
+    // unique
+    public static Integer[] findUnique(Integer[] arr) {
+        Map<Integer, Integer> countMap = new LinkedHashMap<>();
+        for (int num : arr) {
+            countMap.put(num, countMap.getOrDefault(num, 0) + 1);
+        }
+
+        List<Integer> unique = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> entry : countMap.entrySet()) {
+            if (entry.getValue() == 1) {
+                unique.add(entry.getKey());
+            }
+        }
+        return unique.toArray(new Integer[0]);
+    }
 }
+    
 
